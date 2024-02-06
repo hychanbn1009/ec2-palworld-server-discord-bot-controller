@@ -1,0 +1,34 @@
+{
+  "name": "discord-bot-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check": "npx tsc --noEmit",
+    "index": "ts-node -r dotenv/config ./index.ts dotenv_config_path=.env",
+    "prebuild": "del /q dist",
+    "build": "esbuild src/index.ts --bundle --minify --sourcemap --platform=node --outfile=dist/index.js",
+    "postbuild": "cd dist && 7z a -tzip index.zip index.js*",
+    "register_commands": "node -r dotenv/config ./register_commands/register.js dotenv_config_path=.env",
+    "debug:checkStatus": "ts-node -r dotenv/config ./debug/checkInstanceStatus.ts dotenv_config_path=.env"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.133",
+    "esbuild": "0.20.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ec2": "^3.507.0",
+    "@aws-sdk/client-ssm": "^3.507.0",
+    "@discordjs/rest": "^2.2.0",
+    "aws-sdk": "^2.1548.0",
+    "axios": "^1.6.7",
+    "discord-api-types": "^0.37.68",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1",
+    "tweetnacl": "^1.0.3"
+  }
+}
