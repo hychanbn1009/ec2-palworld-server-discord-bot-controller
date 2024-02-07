@@ -35,7 +35,7 @@ export const runServer = async()=>{
         /* required */
         InstanceIds: [process.env.INSTANCE_ID]! as string[],
         Parameters: {
-          "commands": [`runuser -l ${process.env.USER_NAME} -c "cd /home/ec2-user/Steam/steamapps/common/PalServer && ls && ./PalServer.sh"`]
+          "commands": [`runuser -l ${process.env.USER_NAME} -c "cd /home/${process.env.USER_NAME}/Steam/steamapps/common/PalServer && ./steam && ./PalServer.sh"`]
         },
         CloudWatchOutputConfig: {
           CloudWatchLogGroupName: "SSMLogs",
@@ -45,6 +45,24 @@ export const runServer = async()=>{
         // 1 hour
       });
       await ssmClient.send(runServerCommand);
+}
+
+export const updateServer = async()=>{
+  const updateServerCommand = new SendCommandCommand({
+    DocumentName: "AWS-RunShellScript",
+    /* required */
+    InstanceIds: [process.env.INSTANCE_ID]! as string[],
+    Parameters: {
+      "commands": [`runuser -l ${process.env.USER_NAME} -c "cd /home/${process.env.USER_NAME}/Steam && ./steamcmd.sh && login anonymous +app_update 2394010 validate +quit"`]
+    },
+    CloudWatchOutputConfig: {
+      CloudWatchLogGroupName: "SSMLogs",
+      CloudWatchOutputEnabled: true
+    },
+    TimeoutSeconds: 3600
+    // 1 hour
+  });
+  await ssmClient.send(updateServerCommand);
 }
 
 export const checkIp = async() => {
