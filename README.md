@@ -20,16 +20,29 @@ This repository using discord bot with slash command to control EC2 Instance to 
   - Reference
 
 ## Requirements
-Preparing
+- NodeJS
+- Typescript
+- ESBuild
+- AWS account with permission (For Lambda and EC2 deployment)
+- Discord Developer Account (For Discord Bot deployment)
 
 ## AWS Setup
-Preparing
+### EC2 Setup
+- Search EC2 in AWS console
+- Launch an EC2 instance with Amazon Linux (AMI: Amazon Linux 2 AMI)
+- Architecture: 64-bit (x86) 
+- Instance type: depends on your budget and user. [On-Demand Pricing Reference](https://aws.amazon.com/ec2/pricing/on-demand/)
+- create a new key pair / use your own key pair 
+- setup security group rules (ssh in port 22 for your IP & Customer UDP in port 8211 for 0.0.0.0/0)
+- Storage: 20GiB for gp3
+- Launch Instance
+
 
 ## Discord Bot Setup
 Preparing
 
 ## Usage
-Preparing
+```git clone https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller.git```
 
 ## Reference
 Preparing

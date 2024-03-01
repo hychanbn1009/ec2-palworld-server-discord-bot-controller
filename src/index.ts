@@ -1,6 +1,6 @@
 const nacl = require('tweetnacl');
 import { Context, APIGatewayEvent } from 'aws-lambda';
-import { checkInstanceStatus, checkIp, runServer, startInstance, stopInstance } from './ec2Action';
+import { checkInstanceStatus, checkIp, runServer, startInstance, stopInstance, updateServer } from './ec2Action';
 
 // reference
 // https://betterprogramming.pub/build-a-discord-bot-with-aws-lambda-api-gateway-cc1cff750292
@@ -93,6 +93,33 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
     }
     return JSON.stringify(result)
   }
+
+    // Handle /update-palserver Command
+    if (body.data.name == 'update-palserver') {
+      console.log('body is update-palserver')
+      console.log('checking instance state')
+      const status = await checkInstanceStatus()
+      let result
+      // only start server if instance is running
+      if(status==='running'){
+        const response = await updateServer()
+        await runServer()
+        result = {
+          "type": 4,
+          "data":{
+            "content": `${response}`
+          }
+        }
+      }else{
+        return result = {
+          "type": 4,
+          "data":{
+            "content": ` Server is not in running state`
+          }
+        }
+      }
+      return JSON.stringify(result)
+    }
 
   // Handle /stop-server Command
   if (body.data.name == 'stop-instance') {

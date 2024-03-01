@@ -28,6 +28,11 @@ let commands = [
     "type": 1,
     "description": "stop Palworld Server Instance",
   },
+  {
+    "name": "update-palserver",
+    "type": 1,
+    "description": "update Palworld Server",
+  },
 ]
 
 commands.map((command)=>{
