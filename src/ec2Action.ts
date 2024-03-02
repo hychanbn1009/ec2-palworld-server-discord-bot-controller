@@ -35,7 +35,7 @@ export const runServer = async()=>{
         /* required */
         InstanceIds: [process.env.INSTANCE_ID]! as string[],
         Parameters: {
-          "commands": [`runuser -l ${process.env.USER_NAME} -c "cd /home/${process.env.USER_NAME}/Steam/steamapps/common/PalServer && ./steam && ./PalServer.sh"`]
+          "commands": [`runuser -l ${process.env.USER_NAME} -c "cd /home/${process.env.USER_NAME}/Steam/steamapps/common/PalServer && ./PalServer.sh"`]
         },
         CloudWatchOutputConfig: {
           CloudWatchLogGroupName: "SSMLogs",
