@@ -28,15 +28,30 @@ This repository using discord bot with slash command to control EC2 Instance to 
 
 ## AWS Setup
 ### EC2 Setup
+(Reference: thomas2013(https://forum.gamer.com.tw/C.php?bsn=71458&snA=881)
 - Search EC2 in AWS console
-- Launch an EC2 instance with Amazon Linux (AMI: Amazon Linux 2 AMI)
-- Architecture: 64-bit (x86) 
-- Instance type: depends on your budget and user. [On-Demand Pricing Reference](https://aws.amazon.com/ec2/pricing/on-demand/)
-- create a new key pair / use your own key pair 
-- setup security group rules (ssh in port 22 for your IP & Customer UDP in port 8211 for 0.0.0.0/0)
-- Storage: 20GiB for gp3
-- Launch Instance
+ ![pal1](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/3b1f2239-f568-4d45-b8f8-ee99be6f0115)
 
+- Launch an EC2 instance with Amazon Linux (AMI: Amazon Linux 2 AMI)
+ ![image](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/a81d90bb-39d5-4800-b85d-d609c0e0568d)
+
+- Architecture: 64-bit (x86) 
+ Instance type: depends on your budget and user. [On-Demand Pricing Reference](https://aws.amazon.com/ec2/pricing/on-demand/)
+- create a new key pair / use your own key pair
+ ![image](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/8f1e119b-f5fb-4445-9dc6-761b20975576)
+
+- setup security group rules (ssh in port 22 for your IP & Customer UDP in port 8211 for 0.0.0.0/0)
+ ![image](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/0fee14c7-521e-40fb-8c40-ee65c0019530)
+
+- Storage: 20GiB for gp3
+ ![image](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/d9be9413-7cb3-4892-929f-274fb3a53566)
+
+- Launch Instance
+ ![image](https://github.com/hychanbn1009/ec2-palworld-server-discord-bot-controller/assets/51984388/28ea793f-c38f-422d-81be-89c64959adaf)
+
+- SSH to the instance and install Steam CMD and palworld
+- Install SSM Agent on EC2 instances for command control
+- Setup IAM roles to EC2
 
 ## Discord Bot Setup
 Preparing
