@@ -97,6 +97,30 @@ Using Window power shell and input command `ssh -i <your key path> ec2-user@<pub
 
 - Finish Set up games and EC2
 
+### Lambda Setup
+ - Create a new function
+   ![palpost7](https://github.com/user-attachments/assets/1daaf9b0-40e5-49c4-9476-a79fecee6e3e)
+ - Name the function
+   ![palpost8](https://github.com/user-attachments/assets/2aac688b-42a6-416f-b5bc-81b1095e99a0)
+ - Clone this project and run `npm run build`
+ - zip the index.js file in dist
+ - Upload the .zip file to Lambda function
+   ![palpost9](https://github.com/user-attachments/assets/14dc0a79-71dd-4856-b912-73e211333b3b)
+ - Configuration and select Environmental variables
+   ![palpost10](https://github.com/user-attachments/assets/cf10998d-41ca-4e4d-9826-96740c87c05c)
+  
+  ```
+  CLIENT_ID = <from discord developer portal>
+  TOKEN = <from discord developer portal>
+  INSTANCE_ID = <EC2 instance ID>
+  REGION = <EC2 instance region>
+  USER_NAME = <default: ec2-user>
+  ```
+
+  - Assign IAM role for Lambda to control EC2 and click the role name
+  - Add permissions and attach policies
+  - Add `AmazonEC2FullAccess` and `AWSLambdaBasicExecutionRole` policies to your Lambda role
+
 ## Discord Bot Setup
 Preparing
 
